@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { PanZoom } from "react-easy-panzoom";
 import Floor1 from './Floors/Floor1'
 import Floor2 from "./Floors/Floor2";
 import Floor3 from "./Floors/Floor3";
@@ -25,13 +26,24 @@ const TableMap = () => {
   }
 
     return (
-        <>
-        <section id='section1'>
+      <>
+        <div id="container">
+          <PanZoom
+            boundaryRatioVertical={0}
+            boundaryRatioHorizontal={0}
+            enableBoundingBox
+            style={{ width: 400, height: 400 }}
+            maxZoom={1.53}
+            minZoom={0.7}
+            disableDoubleClickZoom={true}
+          >
             {component}
-      
-        </section>
-            <button onClick={changeFloor} />
-            </>
+          </PanZoom>
+        </div>
+        <button onClick={changeFloor} placeholder="hola">
+          Siguiente Planta
+        </button>
+      </>
     );
 };
 
