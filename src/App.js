@@ -1,13 +1,24 @@
 import React from 'react';
-import TableMap from './components/TableMap'
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col } from "react-bootstrap";
+import TableMap from "./components/TableMap";
+import DropD from './components/DropD'
+
 
 
 
 function App() {
   return (
     <>
-      <TableMap/>
-      </>
+      <Container>
+        <Row>
+          <Col>
+          <DropD />
+            <TableMap />
+            </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
