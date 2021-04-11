@@ -75,11 +75,14 @@ const DropD = () => {
                 {table}
               </p>
               <Popover
+                className="pop"
                 key={table}
                 id={id}
                 open={open}
                 anchorEl={anchorEl}
                 onClose={handleClose}
+                anchorReference="anchorPosition"
+                anchorPosition={{ top: 200, left: 100 }}
                 anchorOrigin={{
                   vertical: "bottom",
                   horizontal: "center",
@@ -97,6 +100,8 @@ const DropD = () => {
           ))}
         </Select>
       </FormControl>
+
+     
     </div>
   );
 };
