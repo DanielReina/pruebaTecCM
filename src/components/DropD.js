@@ -7,7 +7,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-
 const useStyles = makeStyles((theme) => ({
   typography: {
     padding: theme.spacing(2),
@@ -21,8 +20,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DropD = () => {
-  const [age, setAge] = useState("");
+const DropDown = ({
+  tables,
+  setTable,
+  setTableState,
+  setFloorState
+}) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const classes = useStyles();
@@ -30,12 +33,14 @@ const DropD = () => {
   const id = open ? "simple-popover" : undefined;
 
   const handleChange = (event) => {
-      setAge(event.target.value);
-      setAnchorEl(event.currentTarget);
+    setTable(event.target.value);
+    setAnchorEl(event.currentTarget);
   };
 
   const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+    setTableState(true)
+    setFloorState(false)
+    setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
@@ -52,7 +57,7 @@ const DropD = () => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={tables}
           onChange={handleChange}
         >
           {[
@@ -82,7 +87,7 @@ const DropD = () => {
                 anchorEl={anchorEl}
                 onClose={handleClose}
                 anchorReference="anchorPosition"
-                anchorPosition={{ top: 200, left: 100 }}
+                anchorPosition={{ top: 200, left: 200 }}
                 anchorOrigin={{
                   vertical: "bottom",
                   horizontal: "center",
@@ -100,10 +105,8 @@ const DropD = () => {
           ))}
         </Select>
       </FormControl>
-
-     
     </div>
   );
 };
 
-export default DropD;
+export default DropDown;

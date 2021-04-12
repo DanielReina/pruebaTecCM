@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PanZoom } from "react-easy-panzoom";
 import styled from "styled-components";
 import Floor1 from "./Floors/Floor1";
@@ -20,19 +20,17 @@ const Button = styled.button`
   background-color: rgb(214, 115, 115);
 `;
 
-const TableMap = () => {
-  const [floor, setFloor] = useState(1);
-  const changeFloor = () => {
-    if (floor === 1) {
-      setFloor(2);
-    } else if (floor === 2) {
-      setFloor(3);
-    } else if (floor === 3) {
-      setFloor(1);
-    }
-  };
+const TableMap = ({
+  tables,
+  tableState,
+  setTableState,
+  floorState,
+  setFloorState
+}) => {
+  let component = <Floor1 />;
 
-  let component;
+  const [floor, setFloor] = useState(1);
+
   if (floor === 1) {
     component = <Floor1 />;
   } else if (floor === 2) {
@@ -40,6 +38,48 @@ const TableMap = () => {
   } else if (floor === 3) {
     component = <Floor3 />;
   }
+
+  let changeFloor = () => {
+    setTableState(false)
+    setFloorState(true)
+    if (tableState === false && floor === 1) {
+      setFloor(2);
+    } else if (tableState === false && floor === 2) {
+      setFloor(3);
+    } else if (tableState === false && floor === 3) {
+      setFloor(1);
+    }
+  };
+
+  useEffect(() => {
+    if (
+      (tableState && floorState === false && tables === "Mesa 1") |
+      (tableState && floorState === false && tables === "Mesa 2") |
+      (tableState && floorState === false && tables === "Mesa 3") |
+      (tableState && floorState === false && tables === "Mesa 4")
+    ) {
+      setFloor(1);
+    } else if (
+      (tableState && floorState === false && tables === "Mesa 5") |
+      (tableState && floorState === false && tables === "Mesa 6")
+    ) {
+      setFloor(2);
+    } else if (
+      (tableState && floorState === false && tables === "Mesa 7") |
+      (tableState && floorState === false && tables === "Mesa 8")
+    ) {
+      setFloor(3);
+    }else if (tableState === false && floor === 1) {
+      setFloor(2);
+      setTableState(true);
+    } else if (tableState === false && floor === 2) {
+      setFloor(3);
+      setTableState(true);
+    } else if (tableState === false && floor === 3) {
+      setFloor(1);
+      setTableState(true);
+    }
+  });
 
   return (
     <>
