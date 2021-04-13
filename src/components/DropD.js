@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Popover from "@material-ui/core/Popover";
-import Typography from "@material-ui/core/Typography";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import {
+  Popover,
+  Typography,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select
+} from "@material-ui/core";
+
+
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -22,9 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const DropDown = ({
   tables,
-  setTable,
-  setTableState,
-  setFloorState
+  setTable
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -38,8 +40,6 @@ const DropDown = ({
   };
 
   const handleClick = (event) => {
-    setTableState(true)
-    setFloorState(false)
     setAnchorEl(event.currentTarget);
   };
 

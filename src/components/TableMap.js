@@ -20,13 +20,7 @@ const Button = styled.button`
   background-color: rgb(214, 115, 115);
 `;
 
-const TableMap = ({
-  tables,
-  tableState,
-  setTableState,
-  floorState,
-  setFloorState
-}) => {
+const TableMap = ({ tables, setTable }) => {
   let component = <Floor1 />;
 
   const [floor, setFloor] = useState(1);
@@ -40,46 +34,30 @@ const TableMap = ({
   }
 
   let changeFloor = () => {
-    setTableState(false)
-    setFloorState(true)
-    if (tableState === false && floor === 1) {
+    setTable("");
+    if (floor === 1) {
       setFloor(2);
-    } else if (tableState === false && floor === 2) {
+    } else if (floor === 2) {
       setFloor(3);
-    } else if (tableState === false && floor === 3) {
+    } else if (floor === 3) {
       setFloor(1);
     }
   };
 
   useEffect(() => {
     if (
-      (tableState && floorState === false && tables === "Mesa 1") |
-      (tableState && floorState === false && tables === "Mesa 2") |
-      (tableState && floorState === false && tables === "Mesa 3") |
-      (tableState && floorState === false && tables === "Mesa 4")
+      (tables === "Mesa 1") |
+      (tables === "Mesa 2") |
+      (tables === "Mesa 3") |
+      (tables === "Mesa 4")
     ) {
       setFloor(1);
-    } else if (
-      (tableState && floorState === false && tables === "Mesa 5") |
-      (tableState && floorState === false && tables === "Mesa 6")
-    ) {
+    } else if ((tables === "Mesa 5") | (tables === "Mesa 6")) {
       setFloor(2);
-    } else if (
-      (tableState && floorState === false && tables === "Mesa 7") |
-      (tableState && floorState === false && tables === "Mesa 8")
-    ) {
+    } else if ((tables === "Mesa 7") | (tables === "Mesa 8")) {
       setFloor(3);
-    }else if (tableState === false && floor === 1) {
-      setFloor(2);
-      setTableState(true);
-    } else if (tableState === false && floor === 2) {
-      setFloor(3);
-      setTableState(true);
-    } else if (tableState === false && floor === 3) {
-      setFloor(1);
-      setTableState(true);
     }
-  });
+  }, [tables]);
 
   return (
     <>
