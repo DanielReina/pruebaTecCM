@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+#section1 {
+  width: 30%;
+  height: 100px;
+  margin-top: 50px;
+}
 .tables {
   position: absolute;
   width: 50px;
@@ -54,42 +59,15 @@
   left: 111px;
 }
 
-#container {
-  width: 30%;
-  height: 100px;
+#section2{
  
+  margin-top: 50px;
+}
+form{
+  width: 200px;
+  margin-bottom: -40px;
 }
 
-/* #section1 {
-  position: absolute;
-  width: 400px;
-  height: 200px;
-  margin: 0px auto;
-  background-color: cadetblue;
-  border: 1px solid black;
-} */
-
-#p1{
-  width: 260px;
-  height: 160px;
-}
-
-#p2{
-  width: 115px;
-  height: 160px;
-}
-
-#p3{
-  width: 164px;
-  height: 150px;
-}
-
-#dropdown-basic{
-display: flex ;
-justify-content: center;
-margin-top: 60px;
-margin-bottom: 20px;
-}
 
 #pop{
   width: 250px;

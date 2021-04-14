@@ -26,11 +26,11 @@ const TableMap = ({ tables, setTable }) => {
   const [floor, setFloor] = useState(1);
 
   if (floor === 1) {
-    component = <Floor1 />;
+    component = <Floor1 tables={tables} />;
   } else if (floor === 2) {
-    component = <Floor2 />;
+    component = <Floor2 tables={tables} />;
   } else if (floor === 3) {
-    component = <Floor3 />;
+    component = <Floor3 tables={tables} />;
   }
 
   let changeFloor = () => {
@@ -61,7 +61,7 @@ const TableMap = ({ tables, setTable }) => {
 
   return (
     <>
-      <div id="container">
+      <section id="section1">
         {floor === 1 ? (
           <Paragraph>Planta 1 - Z1</Paragraph>
         ) : floor === 2 ? (
@@ -80,7 +80,7 @@ const TableMap = ({ tables, setTable }) => {
           {component}
         </PanZoom>
         <Button onClick={changeFloor}>Siguiente Planta</Button>
-      </div>
+      </section>
     </>
   );
 };

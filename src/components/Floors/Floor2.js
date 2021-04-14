@@ -1,11 +1,25 @@
 import React from "react";
+const blackBackground = {
+  backgroundColor: "black",
+  color: "white",
+};
 
-const Floor2 = () => {
+const Floor2 = ({ tables }) => {
   return (
     <>
       <div id="p2">
-        <div className="table5 tables">Mesa5</div>
-        <div className="table6 tables">Mesa6</div>
+        <div
+          className="table5 tables"
+          style={tables === "Mesa 5" ? blackBackground : null}
+        >
+          Mesa5
+        </div>
+        <div
+          className="table6 tables"
+          style={tables === "Mesa 6" ? blackBackground : null}
+        >
+          Mesa6
+        </div>
       </div>
     </>
   );

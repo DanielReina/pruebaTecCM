@@ -6,6 +6,8 @@ import { Popover, TextField } from "@material-ui/core";
 
 const List = styled.li`
   margin: 5px 0px;
+  margin-left:8px;
+  width:250px;
   height: 40px;
   list-style: none;
   border: 1px solid black;
@@ -61,14 +63,14 @@ const TableList = ({ tables, setTable }) => {
 
   useEffect(() => {
     filterTable();
-  }, [tableNumber, filterTable]);
+  }, [tableNumber]);
 
   const classes = useStyles();
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
   return (
-    <>
+    <section id='section2'>
       <form
         onSubmit={(e) => e.preventDefault()}
         onChange={filterTable}
@@ -84,7 +86,7 @@ const TableList = ({ tables, setTable }) => {
         />
       </form>
       <UList>
-        {match ? (
+        {match && tableNumber.length!==0 ? (
           <>
             {tablesArray
               .filter(
@@ -110,12 +112,12 @@ const TableList = ({ tables, setTable }) => {
               anchorEl={anchorEl}
               onClose={handleClose}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "center",
+                vertical: "center",
+                horizontal: "right",
               }}
               transformOrigin={{
-                vertical: "top",
-                horizontal: "center",
+                vertical: "center",
+                horizontal: "right",
               }}
             >
               <div id="pop" className={classes.typography}>
@@ -175,7 +177,7 @@ const TableList = ({ tables, setTable }) => {
           </>
         )}
       </UList>
-    </>
+    </section>
   );
 };
 
