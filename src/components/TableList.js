@@ -1,8 +1,8 @@
-import React, { Fragment, useState, useEffect, useCallback } from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import tablesArray from "../Tables";
 import { makeStyles } from "@material-ui/core/styles";
-import { Popover, Typography, TextField } from "@material-ui/core";
+import { Popover, TextField } from "@material-ui/core";
 
 const List = styled.li`
   margin: 5px 0px;
@@ -34,21 +34,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TableList = ({ tables, setTable }) => {
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [tableNumber, setTableNumber] = useState(false);
   const [match, setMatch] = useState(false);
-  const handleClick = (event, object) => {
-    setAnchorEl(event.target);
+
+  const handleClick = (event,object) => {
+    setAnchorEl(event.target)
+    setTable(event.target.innerText);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
 
   const filterTable = () => {
-    console.log("filter activado", match);
     if (tableNumber) {
       if (
         document.getElementById(tableNumber.toLowerCase().replace(/ /g, ""))
@@ -59,13 +58,14 @@ const TableList = ({ tables, setTable }) => {
       }
     }
   };
+
   useEffect(() => {
-    console.log(
-      "useEffect",
-      tablesArray.filter((object) => object._id === tableNumber)
-    );
     filterTable();
-  }, [tableNumber]);
+  }, [tableNumber, filterTable]);
+
+  const classes = useStyles();
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   return (
     <>
@@ -93,14 +93,15 @@ const TableList = ({ tables, setTable }) => {
               )
               .map((object) => (
                 <List
+                  value={object.table}
                   key={object._id}
                   id={object._id}
                   aria-describedby={id}
                   variant="contained"
                   color="primary"
-                  onClick={handleClick}
+                  onClick={(e) => handleClick(e, object)}
                 >
-                  <p>{object.table}</p>
+                  <p value={object.table}>{object.table}</p>
                 </List>
               ))}
             <Popover
@@ -117,17 +118,24 @@ const TableList = ({ tables, setTable }) => {
                 horizontal: "center",
               }}
             >
-              <Typography id="pop" className={classes.typography}>
-                <strong>Lorem ipsum, dolor sit amet</strong>
-                <br />
-                Consectetur adipisicing elit.
-              </Typography>
+              <div id="pop" className={classes.typography}>
+                {tablesArray
+                  .filter((object) => object.table === tables)
+                  .map((object) => (
+                    <div key={object._id}>
+                      <strong>{object.title}</strong>
+                      <hr />
+                      {object.information}
+                    </div>
+                  ))}
+              </div>
             </Popover>
           </>
         ) : (
           <>
             {tablesArray.map((object) => (
               <List
+                value={object.table}
                 key={object._id}
                 id={object._id}
                 aria-describedby={id}
@@ -152,11 +160,17 @@ const TableList = ({ tables, setTable }) => {
                 horizontal: "center",
               }}
             >
-              <Typography id="pop" className={classes.typography}>
-                <strong>Lorem ipsum, dolor sit amet</strong>
-                <br />
-                Consectetur adipisicing elit.
-              </Typography>
+              <div id="pop" className={classes.typography}>
+                {tablesArray
+                  .filter((object) => object.table === tables)
+                  .map((object) => (
+                    <div key={object._id}>
+                      <strong>{object.title}</strong>
+                      <hr />
+                      {object.information}
+                    </div>
+                  ))}
+              </div>
             </Popover>
           </>
         )}
