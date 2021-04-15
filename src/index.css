@@ -5,9 +5,10 @@
 
 #section1 {
   width: 30%;
-  height: 100px;
-  margin-top: 50px;
+  margin-top: 200px;
+  margin-left: 20%;
 }
+
 .tables {
   position: absolute;
   width: 50px;
@@ -19,73 +20,86 @@
   background-color: white;
 }
 
-/* .table1 {
-  top: 30px;
-  left: 31px;
-} */
-
-.table2 {
-  top: 32px;
-  left: 133px;
-}
-
-.table3 {
-  top: 105px;
-  left: 88px;
-}
-
-.table4 {
-  top: 107px;
-  left: 203px;
-}
-
-.table5 {
-  top: 38px;
-  left: 63px;
-}
-
-.table6 {
-  top: 109px;
-  left: 63px;
-}
-
-.table7 {
-  top: 93px;
-  left: 32px;
-}
-
-#p1{
+#p1 {
   width: 260px;
   height: 160px;
 }
 
-#p2{
+#p2 {
   width: 115px;
   height: 160px;
 }
 
-#p3{
+#p3 {
   width: 164px;
   height: 150px;
 }
 
-.table8 {
-  top: 95px;
-  left: 111px;
+#section2 {
+  margin: 0px auto;
+  margin-top: 200px;
+  margin-left: 20%;
 }
 
-#section2{
- 
-  margin-top: 50px;
-}
-form{
+form {
   width: 200px;
   margin-bottom: -40px;
 }
 
-
-#pop{
+#pop {
   width: 250px;
   text-align: center;
 }
 
+@media (max-width: 991px) {
+  #section1 {
+    margin-top: 50px;
+  }
+
+  #section2 {
+    margin-top: auto;
+    margin-bottom: 50px;
+    margin-left: 30%;
+  }
+}
+@media (max-width: 767px) {
+  #section1 {
+    margin-top: 40px;
+    margin-left: 10%;
+  }
+
+  #section2 {
+    margin-top: 10px;
+    margin-left: 20%;
+  }
+}
+
+@media (max-width: 549px) {
+  #section1 {
+    margin-top: 50px;
+    margin-left: 7%;
+  }
+  #section2 {
+    margin-top: auto;
+    margin-left: 18%;
+  }
+  #p1 {
+    width: 254px;
+    height: 160px;
+  }
+  #panzoom {
+    margin-left: 35%;
+    height: 350px !important;
+    width: 300px !important;
+  }
+}
+@media (max-width: 480px) {
+  #section1 {
+    margin-top: 50px;
+    margin-left: 0px;
+  }
+  #section2 {
+    margin-top: auto;
+    margin-left: 18%;
+  }
+}

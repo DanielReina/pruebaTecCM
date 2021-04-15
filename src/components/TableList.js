@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import tablesArray from "../Tables";
 import { makeStyles } from "@material-ui/core/styles";
@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const TableList = ({ tables, setTable, plan }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [filter, setFilter] = useState("");
@@ -49,13 +48,17 @@ const TableList = ({ tables, setTable, plan }) => {
     setAnchorEl(null);
   };
 
-
-  const tablesInfo = plan.tables
+  const tablesInfo = plan.tables;
   let arrTablesJson = [];
   for (const property in tablesInfo) {
-    arrTablesJson.push(tablesInfo[property])
+    arrTablesJson.push(tablesInfo[property]);
   }
-
+  const match = arrTablesJson.filter(
+    (f) =>
+      f.name_table
+        .toLowerCase()
+        .includes(filter.toLowerCase().replace(/ /g, "")) || filter === ""
+  );
   const classes = useStyles();
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -64,7 +67,6 @@ const TableList = ({ tables, setTable, plan }) => {
     <section id="section2">
       <form
         onSubmit={(e) => e.preventDefault()}
-       
         className={classes.root}
         noValidate
         autoComplete="off"
@@ -80,57 +82,82 @@ const TableList = ({ tables, setTable, plan }) => {
         />
       </form>
       <UList>
-            {arrTablesJson
-              .filter(
-                (f) =>
-                  f.name_table
-                    .toLowerCase()
-                    .includes(filter.toLowerCase().replace(/ /g, "")) ||
-                  filter === ""
-              )
-              .map((object) => (
-                <List
-                  value={object.name_table}
-                  key={object.id_table}
-                  id={object.name_table}
-                  aria-describedby={id}
-                  variant="contained"
-                  color="primary"
-                  onClick={(e) => handleClick(e)}
-                >
-                  <p>{object.name_table}</p>
-                </List>
-              ))}
-            <Popover
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-            >
-              <div id="pop" className={classes.typography}>
-                {tablesArray
-                  .filter(
-                    (object) =>
-                      object.table.toLowerCase().replace(/ /g, "") ===
-                      tables.toLowerCase().replace(/ /g, "")
-                  )
-                  .map((object) => (
-                    <div key={object._id}>
-                      <strong>{object.title}</strong>
-                      <hr />
-                      {object.information}
-                    </div>
-                  ))}
-              </div>
-            </Popover>
+        {match.map((object) => (
+          <List
+            value={object.name_table}
+            key={object.id_table}
+            id={object.name_table}
+            aria-describedby={id}
+            variant="contained"
+            color="primary"
+            onClick={(e) => handleClick(e)}
+          >
+            <p>{object.name_table}</p>
+          </List>
+        ))}
+        {match.length === 1 || window.innerWidth < 800 ? (
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+          >
+            <div id="pop" className={classes.typography}>
+              {tablesArray
+                .filter(
+                  (object) =>
+                    object.table.toLowerCase().replace(/ /g, "") ===
+                    tables.toLowerCase().replace(/ /g, "")
+                )
+                .map((object) => (
+                  <div key={object._id}>
+                    <strong>{object.title}</strong>
+                    <hr />
+                    {object.information}
+                  </div>
+                ))}
+            </div>
+          </Popover>
+        ) : match.length > 1 ? (
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+          >
+            <div id="pop" className={classes.typography}>
+              {tablesArray
+                .filter(
+                  (object) =>
+                    object.table.toLowerCase().replace(/ /g, "") ===
+                    tables.toLowerCase().replace(/ /g, "")
+                )
+                .map((object) => (
+                  <div key={object._id}>
+                    <strong>{object.title}</strong>
+                    <hr />
+                    {object.information}
+                  </div>
+                ))}
+            </div>
+          </Popover>
+        ) : null}
       </UList>
     </section>
   );

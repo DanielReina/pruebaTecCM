@@ -2,7 +2,6 @@ import React from "react";
 
 const Floor1 = ({ tables, arrTablesJson }) => {
   
-  console.log(arrTablesJson);
   return (
     <>
       <div id="p1">

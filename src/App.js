@@ -12,10 +12,10 @@ function App() {
     <>
       <Container>
         <Row>
-          <Col sm={6}>
+          <Col lg={6} styles={{width:400}} >
             <TableMap tables={tables} setTable={setTable} plan={plan} />
           </Col>
-          <Col sm={6}>
+          <Col lg={6}>
             <TableList tables={tables} setTable={setTable} plan={plan} />
           </Col>
         </Row>

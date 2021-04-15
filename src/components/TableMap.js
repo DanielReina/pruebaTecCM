@@ -18,6 +18,12 @@ const Button = styled.button`
   width: 100px;
   height: 50px;
   background-color: rgb(214, 115, 115);
+
+  @media (max-width: 549px) {
+    left: 200px;
+    bottom: 50px;
+    margin-left: 35%;
+  }
 `;
 
 const TableMap = ({ tables, setTable, plan}) => {
@@ -79,20 +85,40 @@ const TableMap = ({ tables, setTable, plan}) => {
             {plan.floors[201].name} - {plan.zones[370].name}
           </Paragraph>
         ) : floor === 2 ? (
-          <Paragraph>{plan.floors[202].name} - {plan.zones[371].name}</Paragraph>
+          <Paragraph>
+            {plan.floors[202].name} - {plan.zones[371].name}
+          </Paragraph>
         ) : (
-          <Paragraph>{plan.floors[203].name} - {plan.zones[372].name}</Paragraph>
+          <Paragraph>
+            {plan.floors[203].name} - {plan.zones[372].name}
+          </Paragraph>
         )}
-        <PanZoom
-          boundaryRatioVertical={0}
-          boundaryRatioHorizontal={0}
-          enableBoundingBox
-          style={{ width: 400, height: 400, border: "solid 2px blue" }}
-          maxZoom={1.53}
-          minZoom={0.7}
-        >
-          {component}
-        </PanZoom>
+        {window.innerWidth < 550 ? (
+          <PanZoom
+            id="panzoom"
+            boundaryRatioVertical={0}
+            boundaryRatioHorizontal={0}
+            enableBoundingBox
+            style={{ width: 400, height: 400, border: "solid 2px blue" }}
+            maxZoom={1.17}
+            minZoom={0.7}
+          >
+            {component}
+          </PanZoom>
+        ) : (
+          <PanZoom
+            id="panzoom"
+            boundaryRatioVertical={0}
+            boundaryRatioHorizontal={0}
+            enableBoundingBox
+            style={{ width: 400, height: 400, border: "solid 2px blue" }}
+            maxZoom={1.53}
+            minZoom={0.7}
+          >
+            {component}
+          </PanZoom>
+        )}
+
         <Button onClick={changeFloor}>Siguiente Planta</Button>
       </section>
     </>
