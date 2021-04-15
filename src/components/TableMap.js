@@ -20,17 +20,23 @@ const Button = styled.button`
   background-color: rgb(214, 115, 115);
 `;
 
-const TableMap = ({ tables, setTable }) => {
+const TableMap = ({ tables, setTable, plan}) => {
   let component = <Floor1 />;
+
+   const tablesInfo = plan.tables;
+   let arrTablesJson = [];
+   for (const property in tablesInfo) {
+     arrTablesJson.push(tablesInfo[property]);
+   }
 
   const [floor, setFloor] = useState(1);
 
   if (floor === 1) {
-    component = <Floor1 tables={tables} />;
+    component = <Floor1 tables={tables} arrTablesJson={arrTablesJson} />;
   } else if (floor === 2) {
-    component = <Floor2 tables={tables} />;
+    component = <Floor2 tables={tables} arrTablesJson={arrTablesJson} />;
   } else if (floor === 3) {
-    component = <Floor3 tables={tables} />;
+    component = <Floor3 tables={tables} arrTablesJson={arrTablesJson} />;
   }
 
   let changeFloor = () => {
@@ -46,15 +52,21 @@ const TableMap = ({ tables, setTable }) => {
 
   useEffect(() => {
     if (
-      (tables === "Mesa 1") |
-      (tables === "Mesa 2") |
-      (tables === "Mesa 3") |
-      (tables === "Mesa 4")
+      (tables === arrTablesJson[0].name_table) |
+      (tables === arrTablesJson[1].name_table) |
+      (tables === arrTablesJson[2].name_table) |
+      (tables === arrTablesJson[3].name_table)
     ) {
       setFloor(1);
-    } else if ((tables === "Mesa 5") | (tables === "Mesa 6")) {
+    } else if (
+      (tables === arrTablesJson[4].name_table) |
+      (tables === arrTablesJson[5].name_table)
+    ) {
       setFloor(2);
-    } else if ((tables === "Mesa 7") | (tables === "Mesa 8")) {
+    } else if (
+      (tables === arrTablesJson[6].name_table) |
+      (tables === arrTablesJson[7].name_table)
+    ) {
       setFloor(3);
     }
   }, [tables]);
@@ -63,11 +75,13 @@ const TableMap = ({ tables, setTable }) => {
     <>
       <section id="section1">
         {floor === 1 ? (
-          <Paragraph>Planta 1 - Z1</Paragraph>
+          <Paragraph>
+            {plan.floors[201].name} - {plan.zones[370].name}
+          </Paragraph>
         ) : floor === 2 ? (
-          <Paragraph>Planta 2 - Z2</Paragraph>
+          <Paragraph>{plan.floors[202].name} - {plan.zones[371].name}</Paragraph>
         ) : (
-          <Paragraph>Planta 3 - Z3</Paragraph>
+          <Paragraph>{plan.floors[203].name} - {plan.zones[372].name}</Paragraph>
         )}
         <PanZoom
           boundaryRatioVertical={0}

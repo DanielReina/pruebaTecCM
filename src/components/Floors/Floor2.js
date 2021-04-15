@@ -10,13 +10,13 @@ const Floor2 = ({ tables }) => {
       <div id="p2">
         <div
           className="table5 tables"
-          style={tables === "Mesa 5" ? blackBackground : null}
+          style={tables === "Mesa5" ? blackBackground : null}
         >
           Mesa5
         </div>
         <div
           className="table6 tables"
-          style={tables === "Mesa 6" ? blackBackground : null}
+          style={tables === "Mesa6" ? blackBackground : null}
         >
           Mesa6
         </div>

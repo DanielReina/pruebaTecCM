@@ -1,34 +1,42 @@
 import React from "react";
+
+
+const Floor1 = ({ tables, arrTablesJson }) => {
+  
 const blackBackground = {
   backgroundColor: "black",
   color: "white",
 };
-
-const Floor1 = ({ tables }) => {
+  console.log(arrTablesJson);
   return (
     <>
       <div id="p1">
         <div
-          className="table1 tables"
-          style={tables === "Mesa 1" ? blackBackground : null}
+          className="tables"
+          style={
+            ({
+              top: parseInt(arrTablesJson[0].y),
+              left: parseInt(arrTablesJson[0].x),
+            })
+          }
         >
           Mesa1
         </div>
         <div
           className="table2 tables"
-          style={tables === "Mesa 2" ? blackBackground : null}
+          style={tables === "Mesa2" ? blackBackground : null}
         >
           Mesa2
         </div>
         <div
           className="table3 tables"
-          style={tables === "Mesa 3" ? blackBackground : null}
+          style={tables === "Mesa3" ? blackBackground : null}
         >
           Mesa3
         </div>
         <div
           className="table4 tables"
-          style={tables === "Mesa 4" ? blackBackground : null}
+          style={tables === "Mesa4" ? blackBackground : null}
         >
           Mesa4
         </div>

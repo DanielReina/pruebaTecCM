@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
+import plan from "./plano.json";
 import TableMap from "./components/TableMap";
 import TableList from './components/TableList'
 
@@ -12,10 +13,10 @@ function App() {
       <Container>
         <Row>
           <Col sm={6}>
-            <TableMap tables={tables} setTable={setTable} />
+            <TableMap tables={tables} setTable={setTable} plan={plan} />
           </Col>
           <Col sm={6}>
-            <TableList tables={tables} setTable={setTable} />
+            <TableList tables={tables} setTable={setTable} plan={plan} />
           </Col>
         </Row>
       </Container>
