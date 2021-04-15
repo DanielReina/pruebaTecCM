@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import tablesArray from "../Tables";
+import tablesArray from "../../Tables";
 import { makeStyles } from "@material-ui/core/styles";
 import { Popover, TextField } from "@material-ui/core";
 

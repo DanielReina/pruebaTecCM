@@ -1,24 +1,45 @@
 import React from "react";
-const blackBackground = {
-  backgroundColor: "black",
-  color: "white",
-};
 
-const Floor3 = ({tables}) => {
+
+const Floor3 = ({ tables, arrTablesJson }) => {
   return (
     <>
       <div id="p3">
         <div
-          className="table7 tables"
-          style={tables === "Mesa7" ? blackBackground : null}
+          className="tables"
+          style={
+            tables === "Mesa7"
+              ? {
+                  backgroundColor: "black",
+                  color: "white",
+                  top: parseInt(arrTablesJson[6].y),
+                  left: parseInt(arrTablesJson[6].x),
+                }
+              : {
+                  top: parseInt(arrTablesJson[6].y),
+                  left: parseInt(arrTablesJson[6].x),
+                }
+          }
         >
-          Mesa7
+          {arrTablesJson[6].name_table}
         </div>
         <div
-          className="table8 tables"
-          style={tables === "Mesa8" ? blackBackground : null}
+          className="tables"
+          style={
+            tables === "Mesa8"
+              ? {
+                  backgroundColor: "black",
+                  color: "white",
+                  top: parseInt(arrTablesJson[7].y),
+                  left: parseInt(arrTablesJson[7].x),
+                }
+              : {
+                  top: parseInt(arrTablesJson[7].y),
+                  left: parseInt(arrTablesJson[7].x),
+                }
+          }
         >
-          Mesa8
+          {arrTablesJson[7].name_table}
         </div>
       </div>
     </>
