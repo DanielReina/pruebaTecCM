@@ -103,7 +103,7 @@ const TableMap = ({ tables, setTable, plan }) => {
             boundaryRatioVertical={0}
             boundaryRatioHorizontal={0}
             enableBoundingBox
-            style={{ width: 400, height: 400 }}
+            style={{ width: 400, height: 400, border: "solid 2px #ccc" }}
             maxZoom={1.17}
             minZoom={0.7}
           >
@@ -115,7 +115,7 @@ const TableMap = ({ tables, setTable, plan }) => {
             boundaryRatioVertical={0}
             boundaryRatioHorizontal={0}
             enableBoundingBox
-            style={{ width: 400, height: 400 }}
+            style={{ width: 400, height: 400, border: "solid 2px #ccc" }}
             maxZoom={1.53}
             minZoom={0.7}
           >
