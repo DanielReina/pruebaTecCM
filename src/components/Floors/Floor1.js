@@ -1,7 +1,6 @@
 import React from "react";
 
 const Floor1 = ({ tables, arrTablesJson }) => {
-  
   return (
     <>
       <div id="p1">
@@ -10,7 +9,7 @@ const Floor1 = ({ tables, arrTablesJson }) => {
           style={
             tables === "Mesa1"
               ? {
-                  backgroundColor: "black",
+                  backgroundColor: "#6B87BF",
                   color: "white",
                   top: parseInt(arrTablesJson[0].y),
                   left: parseInt(arrTablesJson[0].x),
@@ -28,7 +27,7 @@ const Floor1 = ({ tables, arrTablesJson }) => {
           style={
             tables === "Mesa2"
               ? {
-                  backgroundColor: "black",
+                  backgroundColor: "#6B87BF",
                   color: "white",
                   top: parseInt(arrTablesJson[1].y),
                   left: parseInt(arrTablesJson[1].x),
@@ -46,7 +45,7 @@ const Floor1 = ({ tables, arrTablesJson }) => {
           style={
             tables === "Mesa3"
               ? {
-                  backgroundColor: "black",
+                  backgroundColor: "#6B87BF",
                   color: "white",
                   top: parseInt(arrTablesJson[2].y),
                   left: parseInt(arrTablesJson[2].x),
@@ -64,7 +63,7 @@ const Floor1 = ({ tables, arrTablesJson }) => {
           style={
             tables === "Mesa4"
               ? {
-                  backgroundColor: "black",
+                  backgroundColor: "#6B87BF",
                   color: "white",
                   top: parseInt(arrTablesJson[3].y),
                   left: parseInt(arrTablesJson[3].x),

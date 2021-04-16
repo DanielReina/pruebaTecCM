@@ -5,10 +5,12 @@ import Floor1 from "./Floors/Floor1";
 import Floor2 from "./Floors/Floor2";
 import Floor3 from "./Floors/Floor3";
 
-const Paragraph = styled.p`
+const H2 = styled.h2`
   width: 400px;
   text-align: center;
   margin-bottom: 15px;
+  font-size: 20px;
+  text-transform: uppercase;
 `;
 
 const Button = styled.button`
@@ -17,7 +19,8 @@ const Button = styled.button`
   bottom: 50px;
   width: 100px;
   height: 50px;
-  background-color: rgb(214, 115, 115);
+  background-color: rgb(255, 240, 212);
+  border-top-left-radius: 5px;
 
   @media (max-width: 549px) {
     left: 200px;
@@ -26,14 +29,14 @@ const Button = styled.button`
   }
 `;
 
-const TableMap = ({ tables, setTable, plan}) => {
+const TableMap = ({ tables, setTable, plan }) => {
   let component = <Floor1 />;
 
-   const tablesInfo = plan.tables;
-   let arrTablesJson = [];
-   for (const property in tablesInfo) {
-     arrTablesJson.push(tablesInfo[property]);
-   }
+  const tablesInfo = plan.tables;
+  let arrTablesJson = [];
+  for (const property in tablesInfo) {
+    arrTablesJson.push(tablesInfo[property]);
+  }
 
   const [floor, setFloor] = useState(1);
 
@@ -75,23 +78,24 @@ const TableMap = ({ tables, setTable, plan}) => {
     ) {
       setFloor(3);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tables]);
 
   return (
     <>
       <section id="section1">
         {floor === 1 ? (
-          <Paragraph>
+          <H2>
             {plan.floors[201].name} - {plan.zones[370].name}
-          </Paragraph>
+          </H2>
         ) : floor === 2 ? (
-          <Paragraph>
+          <H2>
             {plan.floors[202].name} - {plan.zones[371].name}
-          </Paragraph>
+          </H2>
         ) : (
-          <Paragraph>
+          <H2>
             {plan.floors[203].name} - {plan.zones[372].name}
-          </Paragraph>
+          </H2>
         )}
         {window.innerWidth < 550 ? (
           <PanZoom
@@ -99,7 +103,7 @@ const TableMap = ({ tables, setTable, plan}) => {
             boundaryRatioVertical={0}
             boundaryRatioHorizontal={0}
             enableBoundingBox
-            style={{ width: 400, height: 400, border: "solid 2px blue" }}
+            style={{ width: 400, height: 400, border: "solid 2px #ccc" }}
             maxZoom={1.17}
             minZoom={0.7}
           >
@@ -111,7 +115,7 @@ const TableMap = ({ tables, setTable, plan}) => {
             boundaryRatioVertical={0}
             boundaryRatioHorizontal={0}
             enableBoundingBox
-            style={{ width: 400, height: 400, border: "solid 2px blue" }}
+            style={{ width: 400, height: 400, border: "solid 2px #ccc" }}
             maxZoom={1.53}
             minZoom={0.7}
           >
@@ -119,7 +123,18 @@ const TableMap = ({ tables, setTable, plan}) => {
           </PanZoom>
         )}
 
-        <Button onClick={changeFloor}>Siguiente Planta</Button>
+        <Button onClick={changeFloor}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="#000000"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
+          </svg>
+        </Button>
       </section>
     </>
   );

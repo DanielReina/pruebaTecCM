@@ -9,7 +9,7 @@ const Floor2 = ({ tables, arrTablesJson }) => {
           style={
             tables === "Mesa5"
               ? {
-                  backgroundColor: "black",
+                  backgroundColor: "#6B87BF",
                   color: "white",
                   top: parseInt(arrTablesJson[4].y),
                   left: parseInt(arrTablesJson[4].x),
@@ -27,7 +27,7 @@ const Floor2 = ({ tables, arrTablesJson }) => {
           style={
             tables === "Mesa6"
               ? {
-                  backgroundColor: "black",
+                  backgroundColor: "#6B87BF",
                   color: "white",
                   top: parseInt(arrTablesJson[5].y),
                   left: parseInt(arrTablesJson[5].x),

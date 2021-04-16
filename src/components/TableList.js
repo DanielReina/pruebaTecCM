@@ -10,12 +10,13 @@ const List = styled.li`
   width: 250px;
   height: 40px;
   list-style: none;
-  border: 1px solid black;
+  border: 1px solid rgb(56, 56, 56);
   text-align: center;
   line-height: 40px;
+  background-color: rgb(241, 241, 241);
 
   &:hover {
-    background-color: red;
+    box-shadow: 1px 1px 1px #ccc;
   }
 `;
 
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TableList = ({ tables, setTable, plan }) => {
+  
   const [anchorEl, setAnchorEl] = useState(null);
   const [filter, setFilter] = useState("");
 
@@ -59,6 +61,7 @@ const TableList = ({ tables, setTable, plan }) => {
         .toLowerCase()
         .includes(filter.toLowerCase().replace(/ /g, "")) || filter === ""
   );
+  
   const classes = useStyles();
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -75,6 +78,7 @@ const TableList = ({ tables, setTable, plan }) => {
           name="filter"
           type="text"
           value={filter}
+          style={{ width: "250px" }}
           onChange={(event) => setFilter(event.target.value)}
           id="outlined-basic"
           label="Buscar mesa"
@@ -95,7 +99,7 @@ const TableList = ({ tables, setTable, plan }) => {
             <p>{object.name_table}</p>
           </List>
         ))}
-        {match.length === 1 || window.innerWidth < 800 ? (
+        {match.length === 1 || window.innerWidth < 1050 ? (
           <Popover
             id={id}
             open={open}
